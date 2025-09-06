@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Traffic Light</title>
+  <style>
+    body {
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .traffic-light {
+      background-color: #333;
+      width: 100px;
+      padding: 20px;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+
+    .light {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #111;
+      margin: 0 auto;
+      transition: background-color 0.3s ease;
+    }
+
+    .red.on { background-color: red; }
+    .yellow.on { background-color: yellow; }
+    .green.on { background-color: green; }
+
+    button {
+      margin-top: 20px;
+      padding: 10px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <div>
+    <div class="traffic-light">
+      <div class="light red on" id="red"></div>
+      <div class="light yellow" id="yellow"></div>
+      <div class="light green" id="green"></div>
+    </div>
+    <button onclick="changeLight()">Change Light</button>
+  </div>
+
+  <script>
+    const lights = ["red", "yellow", "green"];
+    let current = 0;
+
+    function changeLight() {
+      document.getElementById(lights[current]).classList.remove("on");
+      current = (current + 1) % lights.length;
+      document.getElementById(lights[current]).classList.add("on");
+    }
+  </script>
+
+</body>
+</html>
